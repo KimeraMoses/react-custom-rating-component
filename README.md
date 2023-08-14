@@ -10,9 +10,9 @@ npm install --save react-custom-rating-component
 
 Or
 
-    ```shell
-    yarn add -D react-custom-rating-component
-    ```
+```shell
+yarn add -D react-custom-rating-component
+```
 
 ## Motivation
 

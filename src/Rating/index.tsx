@@ -1,8 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { RatingProps, svgIconStyleProps } from '../constants/interfaces'
 import { EmptyStar, FullStar, HeartEmptyIcon, HeartFullIcon } from '../components'
-import './styles.css'
-
 
 const Rating: React.FC<RatingProps> = ({
   precision = 1,
@@ -80,41 +78,59 @@ const Rating: React.FC<RatingProps> = ({
   }
 
   return (
-    <div
-      onClick={handleClick}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      ref={ratingContainerRef}
-      className={`md-rating-container ${classNames} ${readOnly ? 'md-rating-container--readonly' : ''}`}
-      style={{
-        gap: spacing,
-      }}
-    >
-      {new Array(count).fill('').map((_, index) => {
-        const activeState = isHovered ? hoverActiveIcon : activeIcon
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div
+        onClick={handleClick}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        ref={ratingContainerRef}
+        className={`md-rating-container ${classNames} ${readOnly ? 'md-rating-container--readonly' : ''}`}
+        style={{
+          display: 'flex',
+          gap: spacing,
+          position: 'relative',
+          cursor: readOnly ? 'default' : 'pointer',
+          lineHeight: 0,
+          boxSizing: 'border-box',
+          padding: 0,
+          margin: 0,
+        }}
+      >
+        {new Array(count).fill('').map((_, index) => {
+          const activeState = isHovered ? hoverActiveIcon : activeIcon
 
-        const showEmptyIcon = activeState === -1 || activeState < index + 1
+          const showEmptyIcon = activeState === -1 || activeState < index + 1
 
-        const isActiveRating = activeState !== 1
-        const isRatingWithPrecision = activeState % 1 !== 0
-        const isRatingEqualToIndex = Math.ceil(activeState) === index + 1
-        const showRatingWithPrecision = isActiveRating && isRatingWithPrecision && isRatingEqualToIndex
+          const isActiveRating = activeState !== 1
+          const isRatingWithPrecision = activeState % 1 !== 0
+          const isRatingEqualToIndex = Math.ceil(activeState) === index + 1
+          const showRatingWithPrecision = isActiveRating && isRatingWithPrecision && isRatingEqualToIndex
 
-        return (
-          <div className='md-rating-star' key={index}>
+          return (
             <div
-              className='md-rating-star--full'
+              className='md-rating-star'
+              key={index}
               style={{
-                width: showRatingWithPrecision ? `${(activeState % 1) * 100}%` : '0%',
+                position: 'relative',
+                cursor: 'pointer',
               }}
-              title={showTitle ? titleArray[index] : ''}
             >
-              {getShape('full')}
+              <div
+                className='md-rating-star--full'
+                style={{
+                  width: showRatingWithPrecision ? `${(activeState % 1) * 100}%` : '0%',
+                  overflow: 'hidden',
+                  position: 'absolute',
+                }}
+                title={showTitle ? titleArray[index] : ''}
+              >
+                {getShape('full')}
+              </div>
+              <div>{showEmptyIcon ? getShape('empty') : getShape('full')}</div>
             </div>
-            <div>{showEmptyIcon ? getShape('empty') : getShape('full')}</div>
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -1,8 +1,7 @@
 {
-  "include": ["src", "src/tests"],
+  "include": ["src"],
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
-    "types": ["jest", "node"],
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
