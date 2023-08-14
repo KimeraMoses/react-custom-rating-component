@@ -5,13 +5,13 @@
 ##
 
 ```shell
-npm install --save react-custom-rating-component
+npm install react-custom-rating-component
 ```
 
 Or
 
 ```shell
-yarn add -D react-custom-rating-component
+yarn add react-custom-rating-component
 ```
 
 ## Motivation
@@ -75,11 +75,8 @@ const App = () => {
 
 ## Browser Support
 
-This library is supported by all the major browsers. It uses SVG and CSS3 to render the icons and hence the browser support is the same as that of SVG and CSS3.
+This library is supported by all the major browsers. If you find any issues please raise an issue on the repo and I will attend to it as soon as possible.
 
-## Try Example And Contribute
+## Contribute
 
-Clone the repo and run `yarn install` and then `yarn run start` to run the example.
-Run `yarn run test` to run the tests and ensure that everything is working as expected before submitting a PR.
-
-If you want to contribute: Make changes in the src folder. And then run `yarn run build`. And of course test by running `yarn run test`. Then submit a PR.
+If you have any ideas on how to make this library better, please feel free to contribute by raising a PR or an issue. I will be happy to review and merge.
