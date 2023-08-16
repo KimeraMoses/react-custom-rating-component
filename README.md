@@ -20,6 +20,8 @@ I wanted a star rating component that was highly customizable and could do half 
 
 ## Demo
 
+Check out the playground with different use cases [Play Ground](https://codesandbox.io/s/react-custom-rating-component-examples-fm98gv)
+
 ### Take a look at [react-custom-rating-component](https://react-custom-rating-component.web.app/) live example
 
 ### Demo Example Image
@@ -29,7 +31,7 @@ I wanted a star rating component that was highly customizable and could do half 
 ## Usage
 
 ```js
-import Rating from 'react-custom-rating-component'
+import { Rating } from 'react-custom-rating-component'
 
 const App = () => {
   return (
