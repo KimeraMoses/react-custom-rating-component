@@ -184,7 +184,7 @@ const Rating: React.FC<RatingProps> = ({
               key={index}
               style={{
                 position: 'relative',
-                cursor: 'pointer',
+                cursor: readOnly ? 'default' : 'pointer',
               }}
             >
               <div
