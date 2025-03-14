@@ -10,7 +10,8 @@ export interface IconStylesProps {
   defaultColor?: string
 }
 
-export interface RatingProps {
+// prettier-ignore
+export type RatingProps = {
   precision?: 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 | 1
   count?: number
   shape?: 'star' | 'heart' | 'custom'
@@ -22,11 +23,20 @@ export interface RatingProps {
   spacing?: string
   titleArray?: string[]
   showTitle?: boolean
-  emptyIcon?: (IconStyles: IconStylesProps) => JSX.Element
-  fillIcon?: (IconStyles: IconStylesProps) => JSX.Element
   onChange?: (newRating: number) => void
   onHover?: (hoveredRating: number) => void
-}
+} & (
+    | {
+      shape?: 'star' | 'heart'
+      emptyIcon?: (IconStyles: IconStylesProps) => JSX.Element
+      fillIcon?: (IconStyles: IconStylesProps) => JSX.Element
+    }
+    | {
+      shape: 'custom'
+      emptyIcon: (IconStyles: IconStylesProps) => JSX.Element
+      fillIcon: (IconStyles: IconStylesProps) => JSX.Element
+    }
+  )
 
 const svgIconPath = 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z'
 const svgIconViewBox = '0 0 51 48'
